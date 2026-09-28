@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+bin/
+web/node_modules/
+web/dist/
+web/.output/
+web/.tanstack/
+.DS_Store
+
+.tools/

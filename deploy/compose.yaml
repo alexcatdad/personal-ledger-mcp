@@ -1,0 +1,25 @@
+name: pa-mcp
+services:
+  app:
+    image: ${PA_MCP_IMAGE:?Set an immutable tested image reference}
+    restart: unless-stopped
+    env_file:
+      - .env.runtime
+    environment:
+      PA_MCP_ADDR: 127.0.0.1:8080
+    # Serve and the application share only the dedicated host loopback.
+    network_mode: host
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    cpus: 1.0
+    pids_limit: 64
+    stop_grace_period: 15s
+    healthcheck:
+      test: [CMD, /app/pa-mcp, healthcheck]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s

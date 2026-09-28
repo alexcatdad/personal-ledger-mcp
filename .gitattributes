@@ -1,0 +1,4 @@
+* text=auto eol=lf
+internal/db/*.go linguist-generated=true
+web/src/lib/api.gen.ts linguist-generated=true
+web/openapi.json linguist-generated=true
