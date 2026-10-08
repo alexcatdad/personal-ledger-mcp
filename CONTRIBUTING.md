@@ -8,7 +8,7 @@ Use Go 1.27.1, Node 26.10.0, and the isolated PostgreSQL 16 setup in RUNBOOK.md.
 
 - `make fmt` formats Go source; `make lint` runs pinned golangci-lint.
 - `make test` is quick feedback and can skip PostgreSQL tests. It is not a release gate.
-- `TEST_DATABASE_URL='<disposable database URL>' make verify` runs formatting, dependency integrity, vet/lint, mandatory PostgreSQL race tests, vulnerability checks, generated-file drift, frontend checks and builds. No automatic CI service is connected in this public snapshot.
+- `TEST_DATABASE_URL='<disposable database URL>' make verify` runs formatting, dependency integrity, vet/lint, mandatory PostgreSQL race tests, vulnerability checks, generated-file drift, frontend checks and builds. GitHub Actions runs this same gate on disposable GitHub-hosted runners and PostgreSQL for pull requests and main-branch pushes.
 - Commit intentionally changed generated files before running drift checks. Never manually edit sqlc or OpenAPI-generated files.
 
 Tests should prove financial invariants, retry/version behavior, rollback, and MCP/API contracts using real PostgreSQL. Do not parallelize tests that share a schema. Regression tests accompany behavior fixes; avoid tests that only restate implementation. No arbitrary coverage percentage substitutes for boundary tests.

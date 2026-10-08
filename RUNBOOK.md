@@ -33,7 +33,9 @@ Keep runtime files outside Git. Verify health, authentication, read-only MCP que
 
 ## Public contributions
 
-This repository is not connected to a private CI runner. Review public contributions before running them on trusted machines; never execute untrusted PR code in a homelab or with production credentials. An isolated hosted runner can be added separately. No automatic deploy or publish workflow is included.
+GitHub Actions runs `make verify` on GitHub-hosted Ubuntu for pull requests, main-branch pushes and manual checks. The workflow creates an isolated PostgreSQL 16 service with synthetic credentials and requires integration tests. Go follows go.mod; Node is pinned to the contributor version. No private runner, registry credential, automatic deployment or publication is involved.
+
+To reproduce the gate, create the disposable database from the local setup above, set TEST_DATABASE_URL and run `make verify`. Stop that named database container after verification. Review public contributions before running them on trusted machines; never execute untrusted PR code in a homelab or with production credentials.
 
 ## Dependencies
 
