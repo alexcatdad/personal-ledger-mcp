@@ -26,7 +26,7 @@ test-integration:
 	@test -n "$(TEST_DATABASE_URL)" || { echo 'Set TEST_DATABASE_URL to the disposable PostgreSQL database from RUNBOOK.md'; exit 1; }
 	REQUIRE_INTEGRATION=1 go test -race -p $(TEST_PARALLELISM) ./...
 
-# Same backend gate locally and in Woodpecker. Never silently skips database tests.
+# Same backend gate locally and in GitHub Actions. Never silently skips database tests.
 check: fmt-check deps-check vet lint test-integration
 
 deps-check:

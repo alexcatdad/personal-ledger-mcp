@@ -1,1 +1,2 @@
 {"date": "2026-09-28", "id": "public-snapshot-001", "decision": "Publish a fresh MIT-licensed snapshot with generic documentation and no private deployment history or homelab CI connection. Preserve deterministic domain operations, typed MCP adapters and mandatory disposable-database checks."}
+{"date":"2026-10-08","id":"public-actions-001","decision":"Run the existing full make verify gate on disposable GitHub-hosted Ubuntu and PostgreSQL for pull requests and main pushes. Public contributions never execute on homelab; no automatic publication or deployment is added."}
